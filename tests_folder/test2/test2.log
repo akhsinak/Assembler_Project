@@ -1,0 +1,9 @@
+ERROR: Line 4: Duplicate Label Defined
+ERROR: Line 6: Not A Number
+ERROR: Line 7: Missing Operand
+ERROR: Line 8: Unexpected Operand
+ERROR: Line 9: Extra on End of Line
+ERROR: Line 10: Invalid Label
+ERROR: Line 11: Invalid Mnemonic
+ERROR: Line 12: Invalid Mnemonic
+ERROR: THERE ARE UNASSIGNED LABELS

@@ -1,0 +1,173 @@
+/*****************************************************************************
+
+TITLE: CLAIMS																														
+AUTHOR:   SAI TULASI KANISHKA PONNADA [ 2101CS57 ]
+
+** Declaration of Authorship **
+
+This txt file, claims.txt, is part of the miniproject of CS209/CS210 at the 
+department of Computer Science and Engg, IIT Patna . 
+
+*****************************************************************************/
+
+Files:
+==========
+*All the files i submitted, asm.c and emu.c and claims.txt, have my name and student id at the start, along with a declaration of authorship.
+
+The evidence for Assembler including the output files from the 5 test examples has also been uploaded. 
+
+They are:
+test0.asm: (3 output files: test0.o, test0.lst, test0.log)
+test1.asm: (3 output files: test1.o, test1.lst, test1.log)
+test2.asm: (3 output files: test2.o, test2.lst, test2.log)
+test3.asm: (3 output files: test3.o, test3.lst, test3.log)
+memcpy.asm: (3 output files: memcpy.o, memcpy.lst, memcpy.log)
+
+All the test files have been tested and work properly. 
+
+Each of the object files that have been produced are also inputted into the emulator to create the dump files 
+to prove the working of the emulator program. Each output has the suffix : _MEMORY_DUMP.txt
+
+
+*Both of my c programs did not show any errors and warnings when i compiled it with
+gcc -std=c89 -pedantic and gcc -std=c89 -pedantic -W -Wall -Wpointer-arith -Wwrite-strings -Wstrict-prototypes standard  or equilvalent ....or gcc ... or g++
+
+*Two programs are compilable with following:
+
+gcc asm.c -o asmexe
+g++ emu.cpp -o emuexe
+
+
+
+=============================
+Program format and structure:
+=============================
+1. The assembler:
+
+    * with two data structures to store respectively labels and mnemonic table with expected operands.
+    * uses a single routine for both passes.
+    * detects label erros.
+    * consistent and sensible formatting with sensible program structure. 
+    * sensible variable, function & type names with explanatory comments.
+		* advanced listing file.
+		* assembles test programs.
+	  * can implements and demonstrates the instruction SET.
+
+2. The emulator (if you are submitting) :
+
+    * loads object file, 
+    * by giving the instructions like "-befor/-after" , the program can produce memory dump before/after execution.       (they are called dump_before and dump_after in my case)
+
+
+    * by giving the instruction like "-trace", the program prints thse result of program executed.
+    (called emulate in my case)
+
+    *it has the facility to export the dump file to a text file using a command called export_dump within the terminal interactive environment
+
+=============================
+Testing:
+=============================
+
+1. The assembler:
+
+I have tested five examples shown as bellow. The errors only occurred in the file test2.asm and 
+the program immediately stopped on the second pass. 
+
+The others were tested without any errors detected and produced three output files, listing file, 
+error log file and machine readable object file, for each example. 
+
+After comparing the listing files and object file of memcpy.asm , memcpy.l, triangle.l memcpy.o 
+with the implemented result given on the assignment, both of them show no difference 
+from those provided( if there is different  that is fine too) 
+
+1)
+#Input: asm test0.asm
+#Output: 
+a. test0.lst 
+b. test0.log (without any error messages)
+c. test0.o
+
+2)
+#Input: asm test1.asm
+#Output: 
+a. test1.lst 
+b. test1.log (without any error messages)
+c. test1.o
+
+3)
+#Input:asm test2.asm
+#Output: 
+a. test2.lst 
+b. test2.log (with error messages shown as below)
+c. test2.o
+
+error messages:
+ERROR: Line 4: Duplicate Label Defined
+ERROR: Line 6: Not A Number
+ERROR: Line 7: Missing Operand
+ERROR: Line 8: Unexpected Operand
+ERROR: Line 9: Extra on End of Line
+ERROR: Line 10: Invalid Label
+ERROR: Line 11: Invalid Mnemonic
+ERROR: Line 12: Invalid Mnemonic
+ERROR: THERE ARE UNASSIGNED LABELS
+
+
+4)
+#Input:asm test3.asm
+#Output: 
+a. test3.lst 
+b. test3.log (without any error messages)
+c. test3.o
+
+
+5)
+#Input:asm memcpy.asm
+#Output: 
+a. memcpy.lst 
+b. memcpy.log (without any error messages)
+c. memcpy.o
+
+
+
+2. The emulator:
+
+I have tested three examples shown as bellow. The errors only occurred in the file test3.o:
+ When tried to emulate this object file we have an infinite loop execution showing there is error
+
+The others were tested without any errors detected and produced excution data both on the screen and 
+output text file for each example according to the usage instruction. 
+
+(TO GENERATE THE DUMP FILE HAVE TO USE THE export_dump instruction in the terinal program of emuexe which is generated after g++ emu.cpp -o emuexe is performed) 
+
+After running the bin file given, the trace data are the same as 
+the implemented result from my own program.
+
+
+//----------------------------------------------
+MY EMULATOR PROGRAM IS AN INTERACTIVE ONE, SO TO USE IT:
+
+-> g++ emu.cpp -o emuexe
+-> execute ./emuexe from the same folder as emuexe executable file and then the interactive program runs in the terminal and to use it we may follow the on-screen instructions and help menu which are clearly laid out 
+
+-> to produce the dump file we need to use the export_dump procedure in the terminal emuexe program after choosing which object file to act upon
+
+
+
+1)
+#Input:emu -trace test1.asm
+#Output: test1_MEMORY_DUMP.txt
+
+
+2)
+#Input: emu -trace triangle.asm
+#Output: triangle_MEMORY_DUMP.txt
+
+
+3)
+#Input: emu -trace test3.asm
+#Output: test3_MEMORY_DUMP.txt 
+with an infinite emulation loop on the screen
+
+//-----------------------------------------------
+
